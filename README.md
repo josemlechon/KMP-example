@@ -39,7 +39,11 @@ Mocked Fake data:
  - https://restcountries.com/
  - https://restful-api.dev/
 
+## testing
+ktor docs for testing https://ktor.io/docs/http-client-testing.html
 
 # Examples
 
 https://github.com/ktorio/ktor-documentation/blob/2.3.7/codeSnippets/snippets/tutorial-client-kmm 
+
+
