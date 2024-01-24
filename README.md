@@ -29,6 +29,9 @@ Considerations
 
     Advanced Gradle Features: Ensure that TOML meets all your needs, especially if you're using advanced Gradle features. While it's great for defining dependencies, some complex configurations might still be better suited to the traditional Groovy or Kotlin DSL.
 
+# App Default
+## Logging 
+Napier https://github.com/AAkira/Napier
 
 # Data layer
 

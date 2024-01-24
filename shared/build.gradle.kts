@@ -29,7 +29,12 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.negotiation)
+                implementation(libs.ktor.client.json)
+                implementation(libs.ktor.client.logging)
                 implementation(libs.kotlinx.coroutines.core)
+
+                implementation(libs.logging.napier)
             }
         }
         val commonTest by getting {
