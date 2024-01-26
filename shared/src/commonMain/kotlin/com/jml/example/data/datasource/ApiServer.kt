@@ -40,7 +40,12 @@ class ApiServer {
                 isLenient = true
             })
         }
-    }.also { Napier.base(DebugAntilog()) }
+
+
+    }.also {
+        Napier.base(DebugAntilog())
+
+    }
 
 }
 
