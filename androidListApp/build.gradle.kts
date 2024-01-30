@@ -3,6 +3,9 @@ plugins {
     kotlin("android")
 }
 
+apply("../tools/detekt.gradle")
+
+
 android {
     namespace = "com.jml.example.app.android"
     compileSdk = 33
@@ -47,3 +50,4 @@ dependencies {
     implementation("androidx.compose.material:material:1.4.3")
     implementation("androidx.activity:activity-compose:1.7.1")
 }
+
