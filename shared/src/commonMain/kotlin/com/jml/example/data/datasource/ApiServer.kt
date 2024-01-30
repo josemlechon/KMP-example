@@ -19,15 +19,15 @@ import kotlinx.serialization.json.Json
 class ApiServer {
     companion object {
 
-        const val HOST = "restcountries.com/v3.1/"
+        const val HOST = "restcountries.com/v3.1"
     }
 
     val httpClient = httpClient { config->
 
         config.install(Logging) {
 
-            level = LogLevel.HEADERS
-            logger = object : Logger { // Logger.DEFAULT
+            level = LogLevel.ALL
+            logger = object : Logger {
                 override fun log(message: String) {
                     Napier.v { "Http Client $message" }
                 }
@@ -38,6 +38,7 @@ class ApiServer {
             json(Json {
                 prettyPrint = true
                 isLenient = true
+                ignoreUnknownKeys = true
             })
         }
 
