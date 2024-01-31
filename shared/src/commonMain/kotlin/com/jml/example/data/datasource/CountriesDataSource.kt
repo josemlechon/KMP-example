@@ -8,11 +8,10 @@ import io.ktor.http.URLProtocol
 import io.ktor.http.path
 import io.ktor.utils.io.core.use
 
-class CountriesDataSource (private val apiServer: ApiServer) {
+class CountriesDataSource(private val apiServer: ApiServer) {
 
-    suspend fun getCountries() {
-
-        try {
+    suspend fun getCountries(): List<CountryResponse> {
+        return try {
             val response = apiServer.httpClient.getHttps { urlBuilder ->
                 urlBuilder.path("all")
             }
@@ -24,10 +23,10 @@ class CountriesDataSource (private val apiServer: ApiServer) {
 
             val countries = response.body<List<CountryResponse>>()
 
-            Napier.d { "My list of countries ${countries.size}" }
-        }catch (e : Exception){
+            countries
+        } catch (e: Exception) {
             Napier.e(e) { "get Countries DS call has failed" }
+            throw e
         }
-
     }
 }

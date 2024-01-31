@@ -13,8 +13,9 @@ class Greeting {
         runBlocking {
 
             try {
-                CountriesDataSource(ApiServer())
+                val countries = CountriesDataSource(ApiServer())
                     .getCountries()
+                Napier.d { "My list of countries ${countries.size}" }
             }catch (e : Exception){
                 Napier.e(e){
                     "Error "

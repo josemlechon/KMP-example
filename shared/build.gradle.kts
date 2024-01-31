@@ -42,7 +42,8 @@ kotlin {
             dependencies {
                 implementation(kotlin("test"))
 
-
+                implementation(libs.testing.ktor)
+                implementation(libs.testing.kotlin)
 
             }
         }
