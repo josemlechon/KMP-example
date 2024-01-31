@@ -1,13 +1,14 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("kotlinx-serialization")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
     targetHierarchy.default()
 
-    android {
+    androidTarget {
         compilations.all {
             kotlinOptions {
                 jvmTarget = "1.8"
@@ -28,12 +29,34 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                //put your multiplatform dependencies here
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.negotiation)
+                implementation(libs.ktor.client.json)
+                implementation(libs.ktor.client.logging)
+                implementation(libs.kotlinx.coroutines.core)
+
+                implementation(libs.logging.napier)
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
+
+                implementation(libs.testing.ktor)
+                implementation(libs.testing.kotlin)
+
+            }
+        }
+
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.ktor.client.okhttp)
+            }
+        }
+
+        val iosMain by getting {
+            dependencies {
+                implementation(libs.ktor.client.darwin)
             }
         }
     }

@@ -49,16 +49,26 @@ tasks.named("check").configure {
 To apply it on demand we have disabled it to be executed when the CHECK task is executed.
 [more info here](https://detekt.dev/docs/gettingstarted/gradle#disabling-detekt-from-the-check-task)
 
+# App Default
+## Logging
+Napier https://github.com/AAkira/Napier
+
 # Data layer
 
 
 ## Network
-Asynchronous client: https://ktor.io/
+### Ktor
+- Asynchronous client: https://ktor.io/
+- Testing: https://ktor.io/docs/testing.html
 Mocked Fake data: 
  - https://restcountries.com/
  - https://restful-api.dev/
 
+## testing
+ktor docs for testing https://ktor.io/docs/http-client-testing.html
 
 # Examples
 
 https://github.com/ktorio/ktor-documentation/blob/2.3.7/codeSnippets/snippets/tutorial-client-kmm 
+
+
