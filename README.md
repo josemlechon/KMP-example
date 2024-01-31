@@ -29,6 +29,25 @@ Considerations
 
     Advanced Gradle Features: Ensure that TOML meets all your needs, especially if you're using advanced Gradle features. While it's great for defining dependencies, some complex configurations might still be better suited to the traditional Groovy or Kotlin DSL.
 
+## Code Analyser Detekt 
+Code smell analysis for Kotlin Projects
+[detekt web page](https://detekt.dev/docs/intro)
+
+The configuration is stored in the directory _tools/_
+
+To add it into a build.gradle.kts just add the following: 
+
+```
+apply("../tools/detekt.gradle")
+tasks.named("check").configure {
+    this.setDependsOn(this.dependsOn.filterNot {
+        it is TaskProvider<*> && it.name == "detekt"
+    })
+}
+```
+
+To apply it on demand we have disabled it to be executed when the CHECK task is executed.
+[more info here](https://detekt.dev/docs/gettingstarted/gradle#disabling-detekt-from-the-check-task)
 
 # Data layer
 
