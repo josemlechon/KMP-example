@@ -8,14 +8,12 @@ import io.ktor.http.URLProtocol
 import io.ktor.http.path
 import io.ktor.utils.io.core.use
 
-class CountriesDataSource {
-
-
+class CountriesDataSource (private val apiServer: ApiServer) {
 
     suspend fun getCountries() {
 
         try {
-            val response = ApiServer().httpClient.getHttps { urlBuilder ->
+            val response = apiServer.httpClient.getHttps { urlBuilder ->
                 urlBuilder.path("all")
             }
 

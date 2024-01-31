@@ -3,6 +3,13 @@ plugins {
     kotlin("android")
 }
 
+apply("../tools/detekt.gradle")
+tasks.named("check").configure {
+    this.setDependsOn(this.dependsOn.filterNot {
+        it is TaskProvider<*> && it.name == "detekt"
+    })
+}
+
 android {
     namespace = "com.jml.example.app.android"
     compileSdk = 33

@@ -1,5 +1,6 @@
 package com.jml.example.app
 
+import com.jml.example.data.datasource.ApiServer
 import com.jml.example.data.datasource.CountriesDataSource
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.runBlocking
@@ -12,7 +13,7 @@ class Greeting {
         runBlocking {
 
             try {
-                CountriesDataSource()
+                CountriesDataSource(ApiServer())
                     .getCountries()
             }catch (e : Exception){
                 Napier.e(e){
