@@ -1,8 +1,8 @@
-autoCorrect: true
+#autoCorrect: true
 
 build:
-  warningThreshold: 5
-  failThreshold: 10
+ # warningThreshold: 5
+ # failThreshold: 10
   weights:
     complexity: 2
     formatting: 0

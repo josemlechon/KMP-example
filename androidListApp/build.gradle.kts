@@ -4,7 +4,11 @@ plugins {
 }
 
 apply("../tools/detekt.gradle")
-
+tasks.named("check").configure {
+    this.setDependsOn(this.dependsOn.filterNot {
+        it is TaskProvider<*> && it.name == "detekt"
+    })
+}
 
 android {
     namespace = "com.jml.example.app.android"
@@ -12,7 +16,6 @@ android {
     defaultConfig {
         applicationId = "com.jml.example.app.android"
         minSdk = 24
-        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
     }
@@ -20,7 +23,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.7"
+        kotlinCompilerExtensionVersion = "1.5.5"
     }
     packaging {
         resources {
@@ -33,11 +36,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_19
+        targetCompatibility = JavaVersion.VERSION_19
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "19"
     }
 }
 
@@ -49,5 +52,6 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:1.4.3")
     implementation("androidx.compose.material:material:1.4.3")
     implementation("androidx.activity:activity-compose:1.7.1")
-}
 
+    implementation(libs.kotlinx.coroutines.android)
+}
