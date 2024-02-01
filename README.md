@@ -71,4 +71,6 @@ ktor docs for testing https://ktor.io/docs/http-client-testing.html
 
 https://github.com/ktorio/ktor-documentation/blob/2.3.7/codeSnippets/snippets/tutorial-client-kmm 
 
+test example: https://medium.com/@maruchin/kmm-architecture-7-testing-93efd01f3952
+
 

@@ -1,7 +1,6 @@
 package com.jml.example.app
 
 import com.jml.example.data.datasource.ApiServer
-import com.jml.example.data.datasource.CountriesDataSource
 import com.jml.example.data.datasource.CountriesDataSourceImpl
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.runBlocking

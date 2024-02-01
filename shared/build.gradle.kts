@@ -17,12 +17,10 @@ kotlin {
 
     androidTarget {
         compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
+            kotlinOptions.jvmTarget = "1.8"
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -49,8 +47,11 @@ kotlin {
             dependencies {
                 implementation(kotlin("test"))
 
-                implementation(libs.testing.ktor)
-                implementation(libs.testing.kotlin)
+                implementation(kotlin("test-common"))
+                implementation(kotlin("test-annotations-common"))
+
+               implementation(libs.testing.ktor)
+               implementation(libs.testing.kotlin)
 
             }
         }
@@ -58,6 +59,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation(libs.ktor.client.okhttp)
+                implementation(kotlin("test"))
             }
         }
 
