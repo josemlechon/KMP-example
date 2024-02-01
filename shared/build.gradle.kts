@@ -4,6 +4,13 @@ plugins {
     id("kotlinx-serialization")
 }
 
+apply("../tools/detekt.gradle")
+tasks.named("check").configure {
+    this.setDependsOn(this.dependsOn.filterNot {
+        it is TaskProvider<*> && it.name == "detekt"
+    })
+}
+
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
     targetHierarchy.default()
