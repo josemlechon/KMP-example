@@ -8,6 +8,11 @@ plugins {
     alias(libs.plugins.detekt).apply(false)
 }
 
+repositories {
+    mavenCentral()
+}
+
+
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }

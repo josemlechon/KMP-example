@@ -1,5 +1,6 @@
 plugins {
     kotlin("multiplatform")
+    id("com.google.devtools.ksp") version "1.9.10-1.0.13"
     id("com.android.library")
     id("kotlinx-serialization")
 }
@@ -9,6 +10,10 @@ tasks.named("check").configure {
     this.setDependsOn(this.dependsOn.filterNot {
         it is TaskProvider<*> && it.name == "detekt"
     })
+}
+
+repositories {
+    mavenCentral()
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -50,16 +55,15 @@ kotlin {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
 
-               implementation(libs.testing.ktor)
-               implementation(libs.testing.kotlin)
-
+                implementation(libs.testing.ktor)
+                implementation(libs.testing.kotlin)
+                implementation(libs.testing.mockactive)
             }
         }
 
         val androidMain by getting {
             dependencies {
                 implementation(libs.ktor.client.okhttp)
-                implementation(kotlin("test"))
             }
         }
 
@@ -69,6 +73,14 @@ kotlin {
             }
         }
     }
+}
+
+dependencies {
+    configurations
+        .filter { it.name.startsWith("ksp") && it.name.contains("Test") }
+        .forEach {
+            add(it.name, libs.testing.mockactive)
+        }
 }
 
 android {

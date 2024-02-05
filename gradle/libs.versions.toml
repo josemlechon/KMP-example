@@ -9,6 +9,7 @@ compose-material3 = "1.1.2"
 androidx-activityCompose = "1.8.2"
 napier = "2.7.1"
 detekt = "1.23.4"
+mockative = "2.0.1"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -31,6 +32,7 @@ logging-napier =  { module = "io.github.aakira:napier", version.ref = "napier" }
 
 testing-ktor = { module = "io.ktor:ktor-server-test-host", version.ref = "ktor"}
 testing-kotlin = { module ="org.jetbrains.kotlin:kotlin-test", version.ref="kotlin"}
+testing-mockactive = { module ="io.mockative:mockative", version.ref = "mockative"}
 
 
 [plugins]
